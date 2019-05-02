@@ -14,6 +14,6 @@ public class T extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=utf-8");
         PrintWriter out = resp.getWriter();
-        out.print("김철호");
+        out.print("위헤민");
     }
 }
