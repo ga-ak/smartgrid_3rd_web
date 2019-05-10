@@ -14,13 +14,13 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <link href="login/style.css" rel="stylesheet">
+    <link href="loginJoin/style.css" rel="stylesheet">
 
 
 </head>
-<body>
+<body style = "background-image: url('images/bg2.jpg')";>
 
-<div class="container">
+<form class="container">
     <div class="row">
         <div class="col-lg-3 col-md-2"></div>
         <div class="col-lg-6 col-md-8 login-box">
@@ -28,7 +28,7 @@
                 <i class="fa fa-key" aria-hidden="true"></i>
             </div>
             <div class="col-lg-12 login-title">
-                S I G N   U P
+                S I G N  &nbsp U P
             </div>
             <br>
 
@@ -37,22 +37,24 @@
                     <form>
                         <div class="form-group">
                             <label class="form-control-label">E-Mail</label>
-                            <input type="text" class="form-control">
+                            <input type="text" name = "id" class="form-control">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">PASSWORD</label>
-                            <input type="password" class="form-control" i>
+                            <input type="password" name = "pw" class="form-control" i>
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label"></label>
-                            <input type="checkbox" name="Automatic" value = "Automatic transfer" class="form-control" style ="font-size: 10px;                     color: #6C6C6C;
-                                                                                        font-weight: bold;
-    letter-spacing: 1px;"><br>
-                            <input type = "text" class = "form-control" placeholder="Account Number">
+                            <input type = "radio" name = "autopay" value = "false" id = "autopay" float = "left">
+                            <label class="form-control-label">Automatic transfer</label>
+
                         </div>
                         <div class="form-group">
-                            <label class="form-control-label">E-Mail</label>
-                            <input type="text" class="form-control">
+                            <label class="form-control-label">Account Number</label>
+                            <input type="text" name = "paynum" class="form-control" i>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Address</label>
+                            <input type="text" name ="useraddr" class="form-control">
                         </div>
 
                         <div class="col-lg-12 loginbttm">
@@ -60,7 +62,7 @@
                                 <!-- Error Message -->
                             </div>
                             <div class="col-lg-6 login-btm login-button">
-                                <button type="submit" class="btn btn-outline-primary">LOGIN</button>
+                                <button type="submit" class="btn btn-outline-primary">JOIN</button>
                             </div>
                         </div>
                     </form>
@@ -69,8 +71,6 @@
             <div class="col-lg-3 col-md-2"></div>
         </div>
     </div>
-
-
 
 
 

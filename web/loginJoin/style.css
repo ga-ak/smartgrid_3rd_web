@@ -1,7 +1,11 @@
 body {
-    background-image: url('images/bg.jpg');
-    background-size : 100%;
+    background: #222D32;
     font-family: 'Roboto', sans-serif;
+}
+
+#autopay{
+    text-align : left;
+
 }
 
 #check{
