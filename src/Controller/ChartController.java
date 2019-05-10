@@ -3,7 +3,9 @@ package Controller;
 
 import Model.DBCP;
 import Model.GraphDTO;
+import Model.GraphSeries;
 import com.google.gson.Gson;
+import javafx.scene.chart.XYChart;
 import test.SelectTest;
 
 import javax.servlet.ServletException;
@@ -35,20 +37,35 @@ public class ChartController extends HttpServlet {
         ResultSet rs = null;
         String sql = "select date_format(date, '%Y-%m-%d'), sum(electric_energy)from elec_power_usage group by date_format(date, '%Y-%m-%d')";
 
-        ArrayList<GraphDTO> graphData = new ArrayList<>();
+        GraphDTO graphData = null;
 
         try {
             psmt = conn.prepareStatement(sql);
             rs = psmt.executeQuery();
 
+
+            // x 축
+            ArrayList<String> categeries = new ArrayList<>();
+            // y 축
+            ArrayList<GraphSeries> series = new ArrayList<>();
+            // y 축의 데이터
+            ArrayList<Integer> seriesData = new ArrayList<>();
+
             while (rs.next()) {
                 String x_date = rs.getString(1);
                 int y_energy = rs.getInt(2);
 
-                System.out.println(x_date + " "+y_energy);
-                graphData.add(new GraphDTO(x_date, y_energy));
-
+                categeries.add(x_date);
+                seriesData.add(y_energy);
             }
+
+            // 만약 시리즈가 여러개라면 밑줄 부분까지를 for문 으로 돌려주면 된다.
+            GraphSeries tempSeries = new GraphSeries("혜민", seriesData);
+
+            series.add(tempSeries);
+            // --------------------------------------------------------------------
+            graphData = new GraphDTO(categeries, series);
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

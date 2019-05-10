@@ -1,28 +1,22 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class GraphDTO {
 
-    private String x_date;
-    private int y_energy;
+    private ArrayList<String> categories;
+    private ArrayList<GraphSeries> series;
 
-    public GraphDTO(String x_date, int y_energy) {
-        this.x_date = x_date;
-        this.y_energy = y_energy;
+    public GraphDTO(ArrayList<String> categories, ArrayList<GraphSeries> series) {
+        this.categories = categories;
+        this.series = series;
     }
 
-    public String getX_date() {
-        return x_date;
+    public ArrayList<String> getCategories() {
+        return categories;
     }
 
-    public void setX_date(String x_date) {
-        this.x_date = x_date;
-    }
-
-    public int getY_energy() {
-        return y_energy;
-    }
-
-    public void setY_energy(int y_energy) {
-        this.y_energy = y_energy;
+    public ArrayList<GraphSeries> getSeries() {
+        return series;
     }
 }
