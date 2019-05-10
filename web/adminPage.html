@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4b1e03bf57b268a3cf44b0e9e610cee"></script>
+    <!--실제 지도를 그리는 api 불러오기, 반드시 실행코드보다 먼저 선언되어야 함 -->
+
+    <title>Hielo by TEMPLATED</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- include application-chart.min.css -->
+    <link rel="stylesheet" type="text/css" href="bower_components/tui-chart/dist/tui-chart.css" />
+    <!-- include libraries -->
+    <script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+    <script src="bower_components/jquery/src/effects.js"></script>
+    <script src="bower_components/raphael/raphael.js"></script>
+    <!-- include chart.min.js -->
+    <script src="bower_components/tui-chart/dist/tui-chart.js"></script>
+    <!-- include map data (only map chart) -->
+    <script src="bower_components/tui-chart/dist/maps/world.js"></script>
+
+    <style>
+        div{
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="subpage">
+
+<!-- Header -->
+<header id="header">
+    <div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div>
+    <a href="#menu">Menu</a>
+</header>
+
+<!-- Nav -->
+<nav id="menu">
+    <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href = "logout.jsp">Logout</a></li>
+        <li><a href="adminPage.html">adminPage</a></li>
+    </ul>
+</nav>
+
+<!-- One -->
+<section id="One" class="wrapper style3">
+    <div class="inner">
+        <header class="align-center">
+            <p>Power Interference Point</p>
+            <h2>AdminPage</h2>
+        </header>
+    </div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2" style="height: 1000px">
+    <div class="inner" style="height: 900px" >
+        <div class="box" style="height: 850px;, align : center">
+            <div class="left-content" style ="float: left;, width: 50%;">
+
+                <h1>MAP</h1>
+                <div id="map" style="width:500px;height:400px;"></div>
+
+
+
+                <script>
+                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                        mapOption = {
+                            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                            level: 3 // 지도의 확대 레벨
+                        };
+
+                    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+                    var map = new daum.maps.Map(mapContainer, mapOption);
+                </script>
+
+            </div>
+            <div class = "right-content" style ="float: right;, width: 50%;">
+                <input type = "search" >
+                <button name = "search">검색</button>
+                <h1>GRAPH</h1>
+                <div id = "chart-area"></div>
+
+                <script src = "assets/js/chart.js"> </script>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+        </ul>
+    </div>
+    <div class="copyright">
+        &copy; Untitled. All rights reserved.
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
