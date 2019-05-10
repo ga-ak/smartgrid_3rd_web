@@ -23421,7 +23421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Make labels width.
 	     * @param {Array.<{chartType: ?string, label: string}>} legendData legend data
 	     * @param {object} theme theme object
-	     * @param {number} maxWidth user option legend max width size
+	     * @param {number} maxWidth userGraph option legend max width size
 	     * @returns {Array.<number>} label widths
 	     */
 	
@@ -23713,8 +23713,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Calculate limit from chart min, max data.
 	     *  - http://peltiertech.com/how-excel-calculates-automatic-chart-axis-limits/
 	     * @memberOf module:calculator
-	     * @param {number} min min minimum value of user data
-	     * @param {number} max max maximum value of user data
+	     * @param {number} min min minimum value of userGraph data
+	     * @param {number} max max maximum value of userGraph data
 	     * @returns {{min: number, max: number}} limit axis limit
 	     */
 	    calculateLimit: function calculateLimit(min, max) {
@@ -29510,7 +29510,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	
 	    /**
-	     * Register of user event.
+	     * Register of userGraph event.
 	     * @param {string} eventName event name
 	     * @param {function} func event callback
 	     * @api
@@ -29617,7 +29617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         */
 	
 	        /**
-	         * Register of user event.
+	         * Register of userGraph event.
 	         * @event MapChart#zoom
 	         * @param {string} magnification zoom ratio
 	         * @api
@@ -29633,7 +29633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	
 	    /**
-	     * Remove user event.
+	     * Remove userGraph event.
 	     * @param {string} eventName event name
 	     * @param {function} func event callback
 	     * @ignore
@@ -36440,7 +36440,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	
 	    /**
-	     * Make parameters for show tooltip user event.
+	     * Make parameters for show tooltip userGraph event.
 	     * @param {{groupIndex: number, index: number}} indexes indexes
 	     * @param {object} additionParams addition parameters
 	     * @returns {{chartType: string, legend: string, legendIndex: number, index: number}} parameters for show tooltip
@@ -39190,7 +39190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	
 	  /**
-	   * Make parameters for show tooltip user event.
+	   * Make parameters for show tooltip userGraph event.
 	   * @param {{groupIndex: number, index: number}} indexes indexes
 	   * @param {object} additionParams addition parameters
 	   * @returns {{chartType: string, legend: string, legendIndex: number, index: number}} parameters for show tooltip
@@ -49910,7 +49910,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	
 	/*
-	 * Raw data by user.
+	 * Raw data by userGraph.
 	 * @typedef {{
 	 *      categories: ?Array.<string>,
 	 *      series: (rawSeriesData|{line: ?rawSeriesData, column: ?rawSeriesData})
@@ -49919,7 +49919,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	/*
 	 * SeriesDataModel is base model for drawing graph of chart series area,
-	 *      and create from rawSeriesData by user,
+	 *      and create from rawSeriesData by userGraph,
 	 * SeriesDataModel.groups has SeriesGroups.
 	 */
 	
@@ -51976,7 +51976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
 	                                                                                                                                                           * @fileoverview SeriesDataModel is base model for drawing graph of chart series area,
-	                                                                                                                                                           *                  and create from rawSeriesData by user,
+	                                                                                                                                                           *                  and create from rawSeriesData by userGraph,
 	                                                                                                                                                           * SeriesDataModel.groups has SeriesGroups.
 	                                                                                                                                                           * @author NHN.
 	                                                                                                                                                           *         FE Development Lab <dl_javascript@nhn.com>
@@ -52012,7 +52012,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SeriesDataModel = function () {
 	    /**
 	     * SeriesDataModel is base model for drawing graph of chart series area,
-	     *      and create from rawSeriesData by user.
+	     *      and create from rawSeriesData by userGraph.
 	     * SeriesDataModel.groups has SeriesGroups.
 	     * @constructs SeriesDataModel
 	     * @private
@@ -53643,7 +53643,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @fileoverview SeriesDataModelForBoxplot is boxplot series model for drawing graph of chart series area,
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *                  and create from rawSeriesData by user,
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *                  and create from rawSeriesData by userGraph,
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * SeriesDataModel.groups has SeriesGroups.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @author NHN.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *         FE Development Lab <dl_javascript@nhn.com>
@@ -56432,7 +56432,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {Array.<string>} labels - legend labels
 	     * @param {{fontSize: number, fontFamily: number}} labelTheme - legend label theme
 	     * @param {number} checkboxWidth - width for checkbox
-	     * @param {?number} [maxWidth] - user option legend maxWidth
+	     * @param {?number} [maxWidth] - userGraph option legend maxWidth
 	     * @returns {number}
 	     * @private
 	     */
@@ -56485,7 +56485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {Array.<string>} dividedLabels - divided labels
 	     * @param {{fontFamily: ?string, fontSize: ?string}} labelTheme - label theme
 	     * @param {number} checkboxWidth - width for checkbox
-	     * @param {?number} [maxWidth] - user option legend maxWidth
+	     * @param {?number} [maxWidth] - userGraph option legend maxWidth
 	     * @returns {number}
 	     * @private
 	     */
@@ -56516,7 +56516,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {number} chartWidth chart width
 	     * @param {{fontSize: number, fontFamily: number}} labelTheme legend label theme
 	     * @param {number} checkboxWidth - width for checkbox
-	     * @param {?number} [maxWidth] - user option legend maxWidth
+	     * @param {?number} [maxWidth] - userGraph option legend maxWidth
 	     * @returns {{dividedLabels: Array.<Array.<string>>, maxLineWidth: number}}
 	     * @private
 	     */
@@ -56617,7 +56617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {Array.<string>} legendLabels - labels for legend
 	     * @param {number} chartWidth - chart width
 	     * @param {number} checkboxWidth - width for checkbox
-	     * @param {?number} [maxWidth] - user option legend maxWidth
+	     * @param {?number} [maxWidth] - userGraph option legend maxWidth
 	     * @returns {{width: number, height: (number)}}
 	     * @private
 	     */
@@ -56638,7 +56638,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param {{fontSize: number, fontFamily: number}} labelTheme - label theme for legend
 	     * @param {Array.<string>} legendLabels - labels for legend
 	     * @param {number} checkboxWidth - width for checkbox
-	     * @param {?number} [maxWidth] - user option legend maxWidth
+	     * @param {?number} [maxWidth] - userGraph option legend maxWidth
 	     * @returns {{width: (number)}}
 	     * @private
 	     */

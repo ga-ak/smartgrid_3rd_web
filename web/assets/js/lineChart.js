@@ -1,123 +1,98 @@
-var dataset;
-var cate=[]; //x축
-var cate1=[]; //y축
+$(document).ready(function () {
+    let dataset;
+    let cate=[]; //x축
+    let cate1=[]; //y축
 
-dataSet();
+    dataSet();
 
-/*
- * 1초 뒤에 실행하는 함수
- * 이유는 ajax로 받아오는 속도의 차이
- *
- * */
-setTimeout(() => {
-    draw();
-}, 1000);
+    /*
+     * 1초 뒤에 실행하는 함수
+     * 이유는 ajax로 받아오는 속도의 차이
+     *
+     * */
 
-function dataSet() {
-    $.ajax({
-        url : 'ChartController',
-        success : function(data) {
-            dataset = data;
-            //alert(dataset.length);
-        }
-    })
-}
+    setTimeout(() => {
+        draw();
+    }, 1000);
 
-function draw(){
-
-    var size = dataset.length;
-
-    for (let i = 0; i<size; i++) {
-        cate.push(dataset[i].division);
-    }
-    for (let i = 0; i<size; i++) {
-        cate1.push(dataset[i].residential);
+    function dataSet() {
+        $.ajax({
+            url : 'ChartController',
+            success : function(data) {
+                dataset = data;
+                alert(dataset.length);
+            }
+        })
     }
 
-    var container = document.getElementById('chart-area');
-    var data = {
-        /*categories: ['01/01/2017', '02/01/2016', '03/01/2016', '04/01/2016', '05/01/2016', '06/01/2016', '07/01/2016', '08/01/2016', '09/01/2016', '10/01/2016', '11/01/2016', '12/01/2016'],*/
-        categories : cate,
+    function draw(){
+        console.log(dataset);
 
-        series : [ {
-            name : '에어컨',
-            /*data: [1000,2000,1500,500,1000,2000,3000,2500,2000,4000]*/
-            /*data : [ 1000, 2000, 1500, 500, 1000, 2000 ]*/
-            data:cate1
+        let size = dataset.length;
+
+        for (let i = 0; i<size; i++) {
+            cate.push(dataset[i].x_date);
+            cate1.push(dataset[i].y_energy);
         }
-            /* {
-                 name: 'Seoul',
-                 data: [-3.5, -1.1, 4.0, 11.3, 17.5, 21.5, 24.9, 25.2, 20.4, 13.9, 6.6, -0.6]
-             },
+
+        var container = document.getElementById('chart-area');
+        var data = {
+            /*categories: ['01/01/2017', '02/01/2016', '03/01/2016', '04/01/2016', '05/01/2016', '06/01/2016', '07/01/2016', '08/01/2016', '09/01/2016', '10/01/2016', '11/01/2016', '12/01/2016'],*/
+            categories : cate,
+
+            series : [ {
+                name : '전력',
+
+                data:cate1
+            }
+
+            ]
+        };
+        var options = {
+            chart : {
+                width : 1160,
+                height : 540,
+                title : '24-hr Average Temperature'
+            },
+            yAxis : {
+                title : 'Electronic data',
+            },
+            xAxis : {
+                title : 'Date',
+                pointOnColumn : true,
+                dateFormat : 'MMM',
+                tickInterval : 'auto'
+            },
+            series : {
+                showDot : false,
+                zoomable : true
+
+            },
+            tooltip : {
+                suffix : 'W'
+            },
+            /*    plot: {
+             bands: [
              {
-                 name: 'Seattle',
-                 data: [3.8, 5.6, 7.0, 9.1, 12.4, 15.3, 17.5, 17.8, 15.0, 10.6, 6.4, 3.7]
-             },
+             range: ['03/01/2016', '05/01/2016'],
+             color: 'gray',
+             opacity: 0.2
+             }
+             ],
+             lines: [
              {
-                 name: 'Sydney',
-                 data: [22.1, 22.0, 20.9, 18.3, 15.2, 12.8, 11.8, 13.0, 15.2, 17.6, 19.4, 21.2]
-             },
-             {
-                 name: 'Moskva',
-                 data: [-10.3, -9.1, -4.1, 4.4, 12.2, 16.3, 18.5, 16.7, 10.9, 4.2, -2.0, -7.5]
-             },
-             {
-                 name: 'Jungfrau',
-                 data: [-13.2, -13.7, -13.1, -10.3, -6.1, -3.2, 0.0, -0.1, -1.8, -4.5, -9.0, -10.9]
+             value: '03/01/2016',
+             color: '#fa2828'
+             }
+             ]
              }*/
-        ]
-    };
-    var options = {
-        chart : {
-            width : 1160,
-            height : 540,
-            title : '24-hr Average Temperature'
-        },
-        yAxis : {
-            title : 'Electronic data',
-        },
-        xAxis : {
-            title : 'Date',
-            pointOnColumn : true,
-            dateFormat : 'MMM',
-            tickInterval : 'auto'
-        },
-        series : {
-            showDot : false,
-            zoomable : true
+        };
 
-        },
-        tooltip : {
-            suffix : 'W'
-        },
-        /*    plot: {
-         bands: [
-         {
-         range: ['03/01/2016', '05/01/2016'],
-         color: 'gray',
-         opacity: 0.2
-         }
-         ],
-         lines: [
-         {
-         value: '03/01/2016',
-         color: '#fa2828'
-         }
-         ]
-         }*/
-    };
-    /*var theme = {
-     series: {
-     colors: [
-     '#83b14e', '#458a3f', '#295ba0', '#2a4175', '#289399',
-     '#289399', '#617178', '#8a9a9a', '#516f7d', '#dddddd'
-     ]
-     }
-     };*/
-    // For apply theme
-    // tui.chart.registerTheme('myTheme', theme);
-    // options.theme = 'myTheme';
-    var chart = tui.chart.lineChart(container, data, options);
+        var chart = tui.chart.lineChart(container, data, options);
 
 
-}
+    }
+
+});
+
+

@@ -1,6 +1,6 @@
-package Controller;
+package Controller.user;
 
-import Model.UserDTO;
+import Model.user.UserDTO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -111,7 +111,7 @@ function internalData( elem, name, data, pvt /* Internal Use Only */ ) {
 	thisCache = cache[ id ];
 
 	// jQuery data() is stored in a separate object inside the object's internal data
-	// cache in order to avoid key collisions between internal data and user-defined
+	// cache in order to avoid key collisions between internal data and userGraph-defined
 	// data.
 	if ( !pvt ) {
 		if ( !thisCache.data ) {

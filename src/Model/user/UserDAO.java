@@ -1,4 +1,7 @@
-package Model;
+package Model.user;
+
+import Model.DBCP;
+import Model.user.UserDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +30,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
     }
@@ -62,7 +65,7 @@ public class UserDAO {
 
     public void join(UserDTO user_info) {
         conn = DBCP.getConnection();
-        sql = "insert into user values (?, ?, ?, ?,?)";
+        sql = "insert into user values (?, ?, ?, ?, ?)";
 
         try {
             psmt = conn.prepareStatement(sql);

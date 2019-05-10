@@ -1,6 +1,6 @@
-package Controller;
+package Controller.user;
 
-import Model.UserDAO;
+import Model.user.UserDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,10 +25,10 @@ public class LoginServelet extends HttpServlet {
 
         UserDAO userLogin =new UserDAO();
 
-        String usermail = userLogin.login(user_id, user_pw);
+        String user_mail = userLogin.login(user_id, user_pw);
 
-        if(usermail != null){
-            out.println(usermail);
+        if(user_mail != null){
+            out.println(user_mail);
 
         }else{
             out.println("<head><body>");

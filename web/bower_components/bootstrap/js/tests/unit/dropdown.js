@@ -664,7 +664,7 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should not close the dropdown if the user clicks on a text field', function (assert) {
+  QUnit.test('should not close the dropdown if the userGraph clicks on a text field', function (assert) {
     assert.expect(2)
     var done = assert.async()
     var dropdownHTML = '<div class="dropdown">' +
@@ -693,7 +693,7 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should not close the dropdown if the user clicks on a textarea', function (assert) {
+  QUnit.test('should not close the dropdown if the userGraph clicks on a textarea', function (assert) {
     assert.expect(2)
     var done = assert.async()
     var dropdownHTML = '<div class="dropdown">' +
