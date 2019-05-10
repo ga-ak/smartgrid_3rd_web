@@ -1,7 +1,4 @@
-package Model.user;
-
-import Model.DBCP;
-import Model.user.UserDTO;
+package Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +11,7 @@ public class UserDAO {
     Connection conn = null;
     PreparedStatement psmt = null;
     ResultSet rs = null;
-    String sql = null;
+   // String sql = null;
 
     String user_mail;
 
@@ -37,9 +34,9 @@ public class UserDAO {
 
 
     //로그인
-    public String login(String user_id, String user_pw) {
+    public String login(String user_id, String user_pw, String sql) {
         conn = DBCP.getConnection();
-        sql = "select user_email from user where user_email=?and user_pw=?";
+
 
         try {
             psmt = conn.prepareStatement(sql);
@@ -65,7 +62,7 @@ public class UserDAO {
 
     public void join(UserDTO user_info) {
         conn = DBCP.getConnection();
-        sql = "insert into user values (?, ?, ?, ?, ?)";
+       String sql = "insert into user values (?, ?, ?, ?, ?)";
 
         try {
             psmt = conn.prepareStatement(sql);

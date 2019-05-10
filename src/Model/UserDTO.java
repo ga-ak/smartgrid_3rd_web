@@ -1,4 +1,4 @@
-package Model.user;
+package Model;
 
 public class UserDTO {
     private String user_email;
