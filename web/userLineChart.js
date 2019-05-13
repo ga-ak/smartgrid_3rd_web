@@ -1,8 +1,10 @@
-$(document).ready(function () {
 
+
+$(document).ready(function () {
+    let endDate = document.getElementById('end_date');
     let dataset = {};
-    var cate = []; //x축
-    var cate1 = []; //y축
+    var dates = []; //x축
+    var energy_data = []; //y축
     var options = {
         chart: {
             width: 1160,
@@ -28,23 +30,42 @@ $(document).ready(function () {
         },
 
     };
-    dataSet();
-    console.log(dataset.x_date);
-    /*
-     * 1초 뒤에 실행하는 함수
-     * 이유는 ajax로 받아오는 속도의 차이
-     *
-     * */
-    let container = document.getElementById('chart-area');
 
-    function dataSet() {
+    //console.log(dataset.x_date);
+
+    let container = document.getElementById('chart-area');
+    endDate.onblur=dataSend;
+
+    function dataSend() {
+
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+
+        alert(start_date +", "+end_date);
+
+            $.ajax({
+                url: "/CalendarController?"+"start_date="+start_date+"&"+"end_date="+end_date,
+                success: function (data) {
+                    alert(data);
+                    dataset = data;
+                    console.log(dataset);
+                    var chart = tui.chart.lineChart(container, dataset, options);
+                },
+                error: alert('날짜가 선택되지않았습니다.')
+
+            })
+
+    }
+
+  /*  function dataSet() {
         $.ajax({
-            url: '/CalendarController',
+            url: "/CalendarController",
+            data : dates,
             success: function (data) {
                 dataset = data;
                 console.log(dataset);
                 var chart = tui.chart.lineChart(container, dataset, options);
             }
         })
-    }
+    }*/
 });

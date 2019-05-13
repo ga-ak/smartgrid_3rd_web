@@ -20,13 +20,13 @@ $(function() {
     });
 
     //input을 datepicker로 선언
-    $("#cal").datepicker();
-    $("#cal2").datepicker();
+    $("#start_date").datepicker();
+    $("#end_date").datepicker();
 
     //From의 초기값을 오늘 날짜로 설정
-    $('#cal').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    $('#start_date').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
     //To의 초기값을 내일로 설정
-    $('#cal2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    $('#end_date').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 
 
 });

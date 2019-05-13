@@ -29,7 +29,7 @@ $(document).ready(function () {
 
     };
     dataSet();
-    console.log(dataset.x_date);
+  //  console.log(dataset.x_date);
     /*
      * 1초 뒤에 실행하는 함수
      * 이유는 ajax로 받아오는 속도의 차이
@@ -42,7 +42,7 @@ $(document).ready(function () {
             url: '/ChartController',
             success: function (data) {
                 dataset = data;
-                console.log(dataset);
+                //console.log(dataset);
                 var chart = tui.chart.lineChart(container, dataset, options);
             }
         })
