@@ -47,7 +47,7 @@ public class LoginServelet extends HttpServlet {
             if(user_type.equals("admin")){
                 resp.sendRedirect("adminPage.html");
             }else{
-                resp.sendRedirect("userPage.html");
+                resp.sendRedirect("user.jsp");
             }
 
         }else{
