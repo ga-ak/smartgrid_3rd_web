@@ -3,8 +3,8 @@
 $(document).ready(function () {
     let endDate = document.getElementById('end_date');
     let dataset = {};
-    var dates = []; //x축
-    var energy_data = []; //y축
+    var cate = []; //x축
+    var cate1 = []; //y축
     var options = {
         chart: {
             width: 1160,
@@ -27,8 +27,7 @@ $(document).ready(function () {
         },
         tooltip: {
             suffix: 'W'
-        },
-
+        }
     };
 
     //console.log(dataset.x_date);
@@ -44,14 +43,14 @@ $(document).ready(function () {
         alert(start_date +", "+end_date);
 
             $.ajax({
-                url: "/CalendarController?"+"start_date="+start_date+"&"+"end_date="+end_date,
+                url: '/CalendarController?'+"start_date="+start_date+"&"+"end_date="+end_date,
                 success: function (data) {
                     alert(data);
                     dataset = data;
                     console.log(dataset);
                     var chart = tui.chart.lineChart(container, dataset, options);
                 },
-                error: alert('날짜가 선택되지않았습니다.')
+                error: alert('Error message')
 
             })
 
