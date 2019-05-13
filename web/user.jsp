@@ -53,11 +53,20 @@
 <section id="two" class="wrapper style2" style="height: 1000px">
     <div class="inner" style="height: 900px" >
         <div class="box" style="height: 850px;, align : center">
-        <div style = "float : left;">
-            <input type ="text" id="cal">
-            <input type ="text" id="cal2">
+        <div style = "height: 5%"></div>
+            <div style = "margin-left: 20px">
+            <form action ="Calendar" style = "width: 5%">
+                <table bgcolor="#ffffff">
+                    <tr>
+                        <td>
+            <input name = "start_date"type ="text" id="cal">&nbsp;~ &nbsp; <input name = "end_date"type ="text" id="cal2"> &nbsp; <input type ="submit" value ="검색">
+                        </td>
+                    </tr>
+                    <tr></tr>
+                </table>
+            </form>
         </div>
-            <div class = "left-content" style ="float: left;, width: 80%;">
+            <div class = "left-content" style ="margin-left: 20px; , width: 80%;">
 
                 <h1>GRAPH</h1>
                 <div id = "chart-area"></div>
