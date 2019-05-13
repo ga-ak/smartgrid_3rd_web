@@ -51,6 +51,7 @@ public class LoginServelet extends HttpServlet {
 
         }else{
           resp.sendRedirect("login.html");
+          out.println("<script>");
         }
 
 
