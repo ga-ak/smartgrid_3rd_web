@@ -28,14 +28,20 @@ public class CalendarDAO {
 
     //달력에서 구간 선택했을 때
     //일별 전력량 뽑아주기
-    public CalendarDTO elecUsage(String start_date, String end_date){
+    public CalendarDTO elecUsage(String user_email, String start_date, String end_date){
         conn = DBCP.getConnection();
-        sql = "select date_format(date, '%Y-%m-%d'), sum(electric_energy) from elec_power_usage where date_format(date, '%Y-%m-%d') between ? and ? " +
-                "group by date_format(date, '%Y-%m-%d')";
+        sql = "select  date_format(elec.date, '%Y-%m-%d'), sum(elec.electric_energy)\n" +
+                "from elec_power_usage elec, amr amr\n" +
+                "where amr.amr_id=elec.amr_id\n" +
+                "and amr.user_id = ?\n" +
+                "and date_format(elec.date, '%Y-%m-%d') between ? and ?\n" +
+                "group by date_format(elec.date, '%Y-%m-%d');";
+
         try {
             psmt = conn.prepareStatement(sql);
-            psmt.setString(1, start_date);
-            psmt.setString(2, end_date);
+            psmt.setString(1, user_email);
+            psmt.setString(2, start_date);
+            psmt.setString(3,end_date);
             rs = psmt.executeQuery();
 
             while (rs.next()){
@@ -47,7 +53,7 @@ public class CalendarDAO {
 
             }
 
-            EnergySeries energys = new EnergySeries("전력", datas);
+            EnergySeries energys = new EnergySeries("power", datas);
 
             energy.add(energys);
 

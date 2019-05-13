@@ -55,7 +55,7 @@
         <div class="box" style="height: 850px;, align : center">
         <div style = "height: 5%"></div>
             <div style = "margin-left: 20px">
-            <form action ="Calendar" style = "width: 5%">
+            <form  style = "width: 5%">
                 <table bgcolor="#ffffff">
                     <tr>
                         <td>
@@ -69,7 +69,63 @@
             <div class = "left-content" style ="margin-left: 20px; , width: 80%;">
 
                 <h1>GRAPH</h1>
-                <div id = "chart-area"></div>
+                <div id = "chart-area">
+                    <script >
+                        $(document).ready(function () {
+
+                            let dataset = {};
+                            var cate = []; //x축
+                            var cate1 = []; //y축
+                            var options = {
+                                chart: {
+                                    width: 1160,
+                                    height: 540,
+                                    title: '24-hr Average Temperature'
+                                },
+                                yAxis: {
+                                    title: 'Electronic data',
+                                },
+                                xAxis: {
+                                    title: 'Date',
+                                    pointOnColumn: true,
+                                    dateFormat: 'MMM',
+                                    tickInterval: 'auto'
+                                },
+                                series: {
+                                    showDot: false,
+                                    zoomable: true
+
+                                },
+                                tooltip: {
+                                    suffix: 'W'
+                                },
+
+                            };
+                            dataSet();
+                            console.log(dataset.x_date);
+                            /*
+                             * 1초 뒤에 실행하는 함수
+                             * 이유는 ajax로 받아오는 속도의 차이
+                             *
+                             * */
+                            let container = document.getElementById('chart-area');
+
+                            function dataSet() {
+                                $.ajax({
+                                    url: '/CalendarController',
+                                    success: function (data) {
+                                        dataset = data;
+                                        console.log(dataset);
+                                        var chart = tui.chart.lineChart(container, dataset, options);
+                                    }
+                                })
+                            }
+                        });
+
+
+                    </script>
+
+                        </div>
             </div>
         </div>
     </div>
@@ -115,7 +171,8 @@
 <script src="assets/js/main.js"></script>
 
 <script src = "date.js"></script>
-<script src = "assets/js/userLineChart.js"> </script>
+
+<!--<script src = "assets/js/userLineChart.js"> </script>-->
 
 </body>
 </html>
