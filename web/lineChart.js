@@ -26,21 +26,7 @@ $(document).ready(function () {
         tooltip: {
             suffix: 'W'
         },
-        /*    plot: {
-           bands: [
-           {
-           range: ['03/01/2016', '05/01/2016'],
-           color: 'gray',
-           opacity: 0.2
-           }
-           ],
-           lines: [
-           {
-           value: '03/01/2016',
-           color: '#fa2828'
-           }
-           ]
-           }*/
+
     };
     dataSet();
     console.log(dataset.x_date);

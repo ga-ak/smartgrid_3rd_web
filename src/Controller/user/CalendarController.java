@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/Calendar")
+@WebServlet("/CalendarController")
 public class CalendarController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,6 +39,7 @@ public class CalendarController extends HttpServlet {
 
         resp.setContentType("application/json; charset=UTF-8");
         resp.getWriter().println(json);
+
 
 
     }

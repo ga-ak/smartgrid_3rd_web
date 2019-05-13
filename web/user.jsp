@@ -115,7 +115,7 @@
 <script src="assets/js/main.js"></script>
 
 <script src = "date.js"></script>
-<script src = "assets/js/lineChart.js"> </script>
+<script src = "assets/js/userLineChart.js"> </script>
 
 </body>
 </html>
