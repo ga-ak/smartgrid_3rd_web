@@ -1,5 +1,8 @@
 package Model;
 
+import Model.DBCP;
+import Model.UserDTO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,7 +53,7 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            getClose();
+
             DBCP.freeConnection(psmt, rs, conn);
         }
 
