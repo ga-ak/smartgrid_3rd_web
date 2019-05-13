@@ -22,6 +22,7 @@
 </head>
 <body class="subpage">
 
+
 <!-- Header -->
 <header id="header">
     <div class="logo"><a href="index.html">Hielo <span>by TEMPLATED</span></a></div>
@@ -36,13 +37,14 @@
         <li><a href="adminPage.html">userpage</a></li>
     </ul>
 </nav>
+<% String user = (String)session.getAttribute("user_mail"); %>
 
 <!-- One -->
 <section id="One" class="wrapper style3">
     <div class="inner">
         <header class="align-center">
             <p>Power Interference Point</p>
-            <h2>UserPage</h2>
+            <h2><%=user %> </h2>
         </header>
     </div>
 </section>
