@@ -54,8 +54,11 @@
     <div class="inner" style="height: 900px" >
         <div class="box" style="height: 850px;, align : center">
         <div style = "float : left;">
-            <input type ="text" id="cal">
-            <input type ="text" id="cal2">
+            <form action ="Calendar">
+            <input name = "start_date"type ="text" id="cal">
+            <input name = "end_date"type ="text" id="cal2">
+            <input type ="submit" value ="확인">
+            </form>
         </div>
             <div class = "left-content" style ="float: left;, width: 80%;">
 
