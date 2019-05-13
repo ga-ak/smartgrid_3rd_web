@@ -1,7 +1,7 @@
 package test;
 
 import Model.DBCP;
-import Model.LocationDTO;
+import Model.admin.LocationDTO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;

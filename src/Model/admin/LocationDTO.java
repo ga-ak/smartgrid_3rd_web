@@ -1,4 +1,4 @@
-package Model;
+package Model.admin;
 
 public class LocationDTO {
     private  double loca_latitude;
