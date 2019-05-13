@@ -8,10 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c4b1e03bf57b268a3cf44b0e9e610cee"></script>
-    <!--실제 지도를 그리는 api 불러오기, 반드시 실행코드보다 먼저 선언되어야 함 -->
-
     <title>Hielo by TEMPLATED</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,20 +15,10 @@
 
     <!-- include application-chart.min.css -->
     <link rel="stylesheet" type="text/css" href="bower_components/tui-chart/dist/tui-chart.css" />
-    <!-- include libraries -->
-    <script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
-    <script src="bower_components/jquery/src/effects.js"></script>
-    <script src="bower_components/raphael/raphael.js"></script>
-    <!-- include chart.min.js -->
-    <script src="bower_components/tui-chart/dist/tui-chart.js"></script>
-    <!-- include map data (only map chart) -->
-    <script src="bower_components/tui-chart/dist/maps/world.js"></script>
 
-    <style>
-        div{
-            height: 300px;
-        }
-    </style>
+    <!-- jQuery UI CSS파일-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+
 </head>
 <body class="subpage">
 
@@ -65,35 +51,14 @@
 <section id="two" class="wrapper style2" style="height: 1000px">
     <div class="inner" style="height: 900px" >
         <div class="box" style="height: 850px;, align : center">
-
+        <div style = "float : left;">
+            <input type ="text" id="cal">
+            <input type ="text" id="cal2">
+        </div>
             <div class = "left-content" style ="float: left;, width: 80%;">
-                <input type = "search" >
-                <button name = "search">검색</button>
+
                 <h1>GRAPH</h1>
                 <div id = "chart-area"></div>
-
-                <script src = "assets/js/lineChart.js"> </script>
-
-            </div>
-
-            <div class="right-content" style ="float: right;, width: 50%;">
-
-                <h1>MAP</h1>
-                <div id="map" style="width:500px;height:400px;"></div>
-
-
-
-                <script>
-                    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                        mapOption = {
-                            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                            level: 3 // 지도의 확대 레벨
-                        };
-
-                    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-                    var map = new daum.maps.Map(mapContainer, mapOption);
-                </script>
-
             </div>
         </div>
     </div>
@@ -115,11 +80,31 @@
 </footer>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
+<!-- include libraries -->
+<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+<!-- include chart.min.js -->
+<script src="bower_components/tui-chart/dist/tui-chart.js"></script>
+
+<script src="bower_components/jquery/src/effects.js"></script>
+<script src="bower_components/raphael/raphael.js"></script>
+
+<!-- include map data (only map chart) -->
+<script src="bower_components/tui-chart/dist/maps/world.js"></script>
+
+<!-- jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!-- jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+<%--<script src="assets/js/jquery.min.js"></script>--%>
 <script src="assets/js/jquery.scrollex.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script src = "date.js"></script>
+<script src = "assets/js/lineChart.js"> </script>
 
 </body>
 </html>

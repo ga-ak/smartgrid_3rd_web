@@ -1,7 +1,7 @@
 /*eslint-disable*/
 var fs = require('fs');
 var path = require('path');
-var pkg = require('./package.json');
+var pkg = require('./chicken.json');
 
 var tsVersion = (/[0-9.]+/).exec(pkg.devDependencies.typescript)[0];
 var declareFilePath = path.join(__dirname, 'index.d.ts');
