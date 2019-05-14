@@ -13,5 +13,8 @@ document.getElementById('today').onclick = function () {
         day = "0" + day;
     }
 
+    // url : "/TodayEnergyCon?today_date="+today_date
+    // today_date에 오늘 날짜 넣어서 보내주기
+
     $("#todaySelect").val(year + "" + month + "" + day);
 }

@@ -35,7 +35,7 @@ public class CalendarDAO {
                 "where amr.amr_id=elec.amr_id\n" +
                 "and amr.user_id = ?\n" +
                 "and date_format(elec.date, '%Y-%m-%d') between ? and ?\n" +
-                "group by date_format(elec.date, '%Y-%m-%d');";
+                "group by date_format(elec.date, '%Y-%m-%d')";
 
         try {
             psmt = conn.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class CalendarDAO {
             psmt.setString(3,end_date);
             rs = psmt.executeQuery();
 
-            while (rs.next()){
+            if (rs.next()){
                 x_data = rs.getString(1);
                 y_data = rs.getInt(2);
 
@@ -52,7 +52,6 @@ public class CalendarDAO {
                 datas.add(y_data);
 
             }
-
             EnergySeries energys = new EnergySeries("power", datas);
 
             energy.add(energys);
@@ -73,6 +72,47 @@ public class CalendarDAO {
     //달력에서 "오늘"선택했을 때
     //시간별 전력량 뽑아주기
 
+    public CalendarDTO todayUsage(String user_email, String today_date){
 
-    //요금 계산
+        conn = DBCP.getConnection();
+
+        sql = "select  time_format(elec.date, '%H:%m'), sum(elec.electric_energy)\n" +
+                "from elec_power_usage elec, amr amr\n" +
+                "where amr.amr_id=elec.amr_id\n" +
+                "  and amr.user_id = ?\n" +
+                "  and date_format(elec.date, '%Y-%m-%d') =?\n" +
+                "group by time_format(elec.date, '%H:%m')";
+
+        try {
+            psmt = conn.prepareStatement(sql);
+            psmt.setString(1, user_email);
+            psmt.setString(2,today_date);
+
+            rs =psmt.executeQuery();
+
+            while (rs.next()){
+                x_data = rs.getString(1);
+                y_data = rs.getInt(2);
+
+                dates.add(x_data);
+                datas.add(y_data);
+
+            }
+            EnergySeries energys = new EnergySeries("power", datas);
+
+            energy.add(energys);
+
+            calendar_data = new CalendarDTO(dates, energy);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBCP.freeConnection(psmt, rs, conn);
+        }
+
+        return calendar_data;
+    }
+
+
+   //요금 계산
 }
