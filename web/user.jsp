@@ -19,34 +19,6 @@
     <!-- jQuery UI CSS파일-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css"/>
 
-    <!-- Scripts -->
-    <!-- include libraries -->
-    <script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
-    <!-- include chart.min.js -->
-    <script src="bower_components/tui-chart/dist/tui-chart.js"></script>
-
-    <script src="bower_components/jquery/src/effects.js"></script>
-    <script src="bower_components/raphael/raphael.js"></script>
-
-    <!-- include map data (only map chart) -->
-    <script src="bower_components/tui-chart/dist/maps/world.js"></script>
-
-    <!-- jQuery 기본 js파일 -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
-    <!-- jQuery UI 라이브러리 js파일 -->
-    <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
-    <%--<script src="assets/js/jquery.min.js"></script>--%>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/skel.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <script src="date.js"></script>
-    <script src="userLineChart.js"></script>
-
-    <!--<script src = "assets/js/userLineChart.js"> </script>-->
 
 </head>
 <body class="subpage">
@@ -80,32 +52,31 @@
 </section>
 
 <!-- Two -->
-<section id="two" class="wrapper style2" style="height: 1000px">
-    <div class="inner" style="height: 900px">
-        <div class="box" style="height: 850px;, align : center">
+<section id="two" class="wrapper style2" style = "height: 1300px" >
+    <div class="inner" style = "height: 1200px">
+        <div class="box" style = "height: 1100px">
             <div style="height: 5%"></div>
-            <div style="margin-left: 20px">
-
+            <div class = "date">
                     <table bgcolor="#ffffff">
                         <tr>
-                            <td>
-                                <input name="start_date" type="text" id="start_date">&nbsp;~ &nbsp; <input name="end_date"
-                                                                                                    type="text"
-                                                                                                    id="end_date"> &nbsp
-
-                            </td>
+                            <td><input name="start_date" type="text" id="start_date"></td>
+                            <td><input name="end_date" type="text" id="end_date"></td>
+                            <td><input id = "todaySelect" type = "text"></td>
+                            <td><button id = "today">오늘</button></td>
                         </tr>
-                        <tr></tr>
                     </table>
 
             </div>
-            <div class="left-content" style="margin-left: 20px; , width: 80%;">
-
+            <div class = "pay">
+                <h1>요금</h1>
+            </div>
+            <div class="graph" >
                 <h1>GRAPH</h1>
-                <div id="chart-area">
-
-
-                </div>
+                <div id="chart-area"></div>
+            </div>
+            <div style = "height : 20px"></div>
+            <div class = "table">
+                <h1>통계표 자리</h1>
             </div>
         </div>
     </div>
@@ -126,6 +97,36 @@
     </div>
 </footer>
 
+
+<!-- Scripts -->
+<!-- include libraries -->
+<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+<!-- include chart.min.js -->
+<script src="bower_components/tui-chart/dist/tui-chart.js"></script>
+
+<script src="bower_components/jquery/src/effects.js"></script>
+<script src="bower_components/raphael/raphael.js"></script>
+
+<!-- include map data (only map chart) -->
+<script src="bower_components/tui-chart/dist/maps/world.js"></script>
+
+<!-- jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!-- jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+<%--<script src="assets/js/jquery.min.js"></script>--%>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="date.js"></script>
+<script src="userLineChart.js"></script>
+<script src = "todaySelect.js"></script>
+
+<!--<script src = "assets/js/userLineChart.js"> </script>-->
 
 
 </body>
