@@ -63,8 +63,8 @@ $(function() {
 
         let container = document.getElementById('chart-area');
 
-        var start_date = $('#start_date').val();
-        var end_date = $('#end_date').val();
+       var start_date = $('#start_date').val();
+       var end_date = $('#end_date').val();
 
         //alert(start_date + ", " + end_date);
 

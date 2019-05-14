@@ -58,24 +58,32 @@
 </section>
 
 <!-- Two -->
-<section id="two" class="wrapper style2" style="height: 1000px">
-    <div class="inner" style="height: 900px">
-        <div class="box" style="height: 850px;, align : center">
+<section id="two" class="wrapper style2" style = "height: 1300px" >
+    <div class="inner" style = "height: 1200px">
+        <div class="box" style = "height: 1100px">
             <div style="height: 5%"></div>
-            <div style="margin-left: 20px">
+            <div class = "date">
                 <table bgcolor="#ffffff">
                     <tr>
-                        <td>
-                            <input name="start_date" type="text" id="start_date">&nbsp;~ &nbsp; <input name="end_date" type="text" id="end_date">
-                        </td>
+                        <td><input name="start_date" type="text" id="start_date"></td>
+                        <td><input name="end_date" type="text" id="end_date"></td>
+                        <td><input id = "todaySelect" type = "text"></td>
+                        <td><button id = "today">오늘</button></td>
                     </tr>
-                    <tr></tr>
+
                 </table>
             </div>
-            <div class="left-content" style="margin-left: 20px; , width: 80%;">
+            <div class = "pay">
+                <h1 id = "pay" style = "height : 100px;">요금</h1>
+                <input type = "button" value = "결제하기" onclick="showPopup();">
+            </div>
+            <div class="graph" >
                 <h1>GRAPH</h1>
-                    <div id="chart-area">
-                </div>
+                <div id="chart-area"></div>
+            </div>
+            <div style = "height : 20px"></div>
+            <div class = "table">
+                <h1>통계표 자리</h1>
             </div>
         </div>
     </div>
