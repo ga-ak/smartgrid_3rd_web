@@ -3,8 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="pay/pay.css"/>
+
 </head>
 <body>
+<div class="sub-body">
+    <header class="header">
+        <h1 class="price"><span class="price__dollar"></span>100<span class="price__time"> 원</span></h1>
+        <p class="desc">결제하기</p>
+    </header>
 
+    <div class="pay-select">
+        <div class="pay-select__item pay-select--card is-active">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/346994/Card%20Icon.svg" alt="" />
+            <p>Credit Card</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="pay-select__item pay-select--paypal">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/346994/Pp%20Icon.svg" alt="" />
+            <p>kakaoPay</p>
+        </div>
+    </div>
+
+    <div class="select-body">
+        <div class="select-body__content select-body--card is-active">
+            <form action="/" method="post" id="cardForm">
+                <label class="form__label" for="card-number">Card Number</label>
+                <div class="card-input" id="card-number"></div>
+
+                <label class="form__label" for="expiration-month">Expiration Date</label>
+                <div class="date__container">
+                    <div class="card-input" id="expiration-month"></div>
+
+                    <div class="card-input" id="expiration-year"></div>
+                </div>
+
+                <label class="form__label" for="cvv">CVV</label>
+                <div class="card-input" id="cvv"></div>
+
+                <label class="form__label" for="cvv">Billing Zip Code</label>
+                <div class="card-input" id="postal-code"></div>
+
+                <input type="submit" value="Subscribe" id="submit" />
+            </form>
+        </div>
+
+        <div class="select-body__content select-body--paypal">
+            <script src="images/kakaopay1.png"
+                    data-merchant="braintree"
+                    data-id="paypal-button"
+                    data-button="subscribe"
+                    data-color="gold"
+                    data-size="medium"
+                    data-shape="pill"
+                    data-button_type="submit"
+                    data-button_disabled="false"
+            ></script>
+        </div>
+
+
+    </div>
+</div>
+
+<script src = "pay/paystyle.js"></script>
+<!-- Load the required client component. -->
+<script src="https://js.braintreegateway.com/web/3.43.0/js/client.min.js"></script>
+
+<!-- Load Hosted Fields component. -->
+<script src="https://js.braintreegateway.com/web/3.43.0/js/hosted-fields.min.js"></script>
 </body>
 </html>
