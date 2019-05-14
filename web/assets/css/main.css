@@ -2,6 +2,29 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
+    .date {
+        width : 35%;
+        margin-left : 40px;
+    }
+
+    .pay{
+        margin-right: 40px;
+        float: right;
+        width: 40%;
+        height: 45%;
+    }
+
+    .graph{
+        margin-left: 40px;
+        width: 50%;
+        height: 45%;
+    }
+
+    .table{
+        margin: auto;
+        width : 80%;
+        height: 40%;
+    }
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
