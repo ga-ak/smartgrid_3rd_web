@@ -42,29 +42,20 @@ $(document).ready(function () {
 
         alert(start_date +", "+end_date);
 
-            $.ajax({
-                url: '/CalendarController?'+"start_date="+start_date+"&"+"end_date="+end_date,
-                success: function (data) {
-                    alert(data);
-                    dataset = data;
-                    console.log(dataset);
-                    var chart = tui.chart.lineChart(container, dataset, options);
-                },
-                error: alert('Error message')
-
-            })
-
-    }
-
-  /*  function dataSet() {
         $.ajax({
-            url: "/CalendarController",
-            data : dates,
+            url: '/CalendarController?' + "start_date=" + start_date + "&" + "end_date=" + end_date,
             success: function (data) {
+                alert('받은 데이터>> ' + JSON.stringify(data));
                 dataset = data;
                 console.log(dataset);
                 var chart = tui.chart.lineChart(container, dataset, options);
+            },
+            error: function () {
+                alert('Error message')
             }
+
         })
-    }*/
+
+    }
+
 });

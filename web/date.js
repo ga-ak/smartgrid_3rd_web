@@ -28,5 +28,65 @@ $(function() {
     //To의 초기값을 내일로 설정
     $('#end_date').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 
+    $('#end_date').datepicker().on('change',function(){
+        //alert('날짜 변경됨');
+        lineChart();
+    });
 
+    //////////////////////////////////////////차트JS//////////////////////////////////////////
+    function lineChart(){
+        let dataset = {};
+        var options = {
+            chart: {
+                width: 1100,
+                height: 540,
+                title: '24-hr Average Temperature'
+            },
+            yAxis: {
+                title: 'Electronic data',
+            },
+            xAxis: {
+                title: 'Date',
+                pointOnColumn: true,
+                dateFormat: 'MMM',
+                tickInterval: 'auto'
+            },
+            series: {
+                showDot: false,
+                zoomable: true
+
+            },
+            tooltip: {
+                suffix: 'W'
+            }
+        };
+
+        let container = document.getElementById('chart-area');
+
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
+
+        //alert(start_date + ", " + end_date);
+
+        $.ajax({
+            url: '/CalendarController?start_date=' + start_date + "&end_date=" + end_date,
+            success: function (data) {
+                 var dataset = {
+                    categories: data.dates,
+                    series: [
+                        {
+                            name: data.energy_data[0].name,
+                            data: data.energy_data[0].energy
+                        },
+                    ]
+                }
+                console.log(dataset);
+                var chart = tui.chart.lineChart(container, dataset, options);
+            },
+            error: function () {
+                alert('Error message')
+            }
+        });
+
+    }
 });
