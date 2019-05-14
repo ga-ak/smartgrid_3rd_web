@@ -6,11 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String user = (String) session.getAttribute("user_mail"); %>
-<% if(user == null){
-    response.sendRedirect("login.html");
-}%>
-
 <html>
 <head>
     <title>Hielo by TEMPLATED</title>
@@ -24,13 +19,10 @@
     <!-- jQuery UI CSS파일-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css"/>
 
-    <script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
-    <script src="bower_components/jquery/src/effects.js"></script>
-    <script src="bower_components/raphael/raphael.js"></script>
-    <script src="bower_components/tui-chart/dist/tui-chart.js"></script>
-    <script src="bower_components/tui-chart/dist/maps/world.js"></script>
+
 </head>
 <body class="subpage">
+
 
 <!-- Header -->
 <header id="header">
@@ -46,13 +38,15 @@
         <li><a href="adminPage.html">userpage</a></li>
     </ul>
 </nav>
+<% String user = (String) session.getAttribute("user_mail"); %>
 
 <!-- One -->
 <section id="One" class="wrapper style3">
     <div class="inner">
         <header class="align-center">
             <p>Power Interference Point</p>
-            <h2><%=user %></h2>
+            <h2><%=user %>
+            </h2>
         </header>
     </div>
 </section>
@@ -63,19 +57,18 @@
         <div class="box" style = "height: 1100px">
             <div style="height: 5%"></div>
             <div class = "date">
-                <table bgcolor="#ffffff">
-                    <tr>
-                        <td><input name="start_date" type="text" id="start_date"></td>
-                        <td><input name="end_date" type="text" id="end_date"></td>
-                        <td><input id = "todaySelect" type = "text"></td>
-                        <td><button id = "today">오늘</button></td>
-                    </tr>
+                    <table bgcolor="#ffffff">
+                        <tr>
+                            <td><input name="start_date" type="text" id="start_date"></td>
+                            <td><input name="end_date" type="text" id="end_date"></td>
+                            <td><input id = "todaySelect" type = "text"></td>
+                            <td><button id = "today">오늘</button></td>
+                        </tr>
+                    </table>
 
-                </table>
             </div>
             <div class = "pay">
-                <h1 id = "pay" style = "height : 100px;">요금</h1>
-                <input type = "button" value = "결제하기" onclick="showPopup();">
+                <h1>요금</h1>
             </div>
             <div class="graph" >
                 <h1>GRAPH</h1>
@@ -103,17 +96,37 @@
         &copy; Untitled. All rights reserved.
     </div>
 </footer>
+
+
 <!-- Scripts -->
+<!-- include libraries -->
+<script src="bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+<!-- include chart.min.js -->
+<script src="bower_components/tui-chart/dist/tui-chart.js"></script>
+
+<script src="bower_components/jquery/src/effects.js"></script>
+<script src="bower_components/raphael/raphael.js"></script>
+
+<!-- include map data (only map chart) -->
+<script src="bower_components/tui-chart/dist/maps/world.js"></script>
+
+<!-- jQuery 기본 js파일 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!-- jQuery UI 라이브러리 js파일 -->
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-<script src="date.js"></script>
-
+<%--<script src="assets/js/jquery.min.js"></script>--%>
 <script src="assets/js/jquery.scrollex.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
+<script src="date.js"></script>
+<script src="userLineChart.js"></script>
+<script src = "todaySelect.js"></script>
+
+<!--<script src = "assets/js/userLineChart.js"> </script>-->
 
 
 </body>

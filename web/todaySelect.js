@@ -18,3 +18,26 @@ document.getElementById('today').onclick = function () {
 
     $("#todaySelect").val(year + "" + month + "" + day);
 }
+
+function dataSet() {
+    $.ajax({
+        url: "/TodayEnergyCon?today_date=" + today_date,
+        success: function (data) {
+            isSuccess = data;
+            let cnt = 0
+            if (isSuccess) {
+
+            } else {
+                if (cnt !=4) {
+                    dataSet();
+                    cnt++;
+                } else {
+                    cnt = 0;
+                }
+            }
+            //console.log(dataset);
+
+        }
+    })
+}
+
