@@ -24,8 +24,8 @@ public class TodayEnergyController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
-        String today_date = req.getParameter("today_date");
-        String user_email = (String)session.getAttribute("user_mail");
+       String today_date = req.getParameter("today_date");
+       String user_email = (String)session.getAttribute("user_mail");
 
 
         CalendarDAO today_dao = new CalendarDAO();
