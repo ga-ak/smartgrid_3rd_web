@@ -123,7 +123,6 @@
 <script src="assets/js/main.js"></script>
 
 <script src="date.js"></script>
-<script src="userLineChart.js"></script>
 <script src = "todaySelect.js"></script>
 
 <!--<script src = "assets/js/userLineChart.js"> </script>-->
