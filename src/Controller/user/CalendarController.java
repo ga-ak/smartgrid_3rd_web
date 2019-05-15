@@ -31,6 +31,7 @@ public class CalendarController extends HttpServlet {
       String start_date =  req.getParameter("start_date");
       String end_date = req.getParameter("end_date");
       String user_email =(String)session.getAttribute("user_mail");
+
       System.out.println(user_email);
 
 

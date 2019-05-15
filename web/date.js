@@ -33,13 +33,14 @@ $(function() {
         lineChart();
     });
 
+    //lineChart();
     //////////////////////////////////////////차트JS//////////////////////////////////////////
     function lineChart(){
         let dataset = {};
         var options = {
             chart: {
-                width: 1100,
-                height: 540,
+                width: 600,
+                height: 400,
                 title: '24-hr Average Temperature'
             },
             yAxis: {
@@ -63,15 +64,20 @@ $(function() {
 
         let container = document.getElementById('chart-area');
 
-       var start_date = $('#start_date').val();
-       var end_date = $('#end_date').val();
+        var start_date = $('#start_date').val();
+        var end_date = $('#end_date').val();
 
-        //alert(start_date + ", " + end_date);
+        alert(start_date + ", " + end_date);
 
+
+        //url: '/CalendarController?start_date=' + start_date + "&end_date=" + end_date,
+        //url: '/CalendarController?start_date=2019-05-10&end_date=2019-05-13',
         $.ajax({
             url: '/CalendarController?start_date=' + start_date + "&end_date=" + end_date,
             success: function (data) {
-                 var dataset = {
+                alert(data.dates + '/' + data.energy_data[0].name + '/' + data.energy_data[0].energy);
+
+                var dataset = {
                     categories: data.dates,
                     series: [
                         {
@@ -82,9 +88,10 @@ $(function() {
                 }
                 console.log(dataset);
                 var chart = tui.chart.lineChart(container, dataset, options);
+                
             },
             error: function () {
-                alert('Error message')
+                alert('Error message');
             }
         });
 

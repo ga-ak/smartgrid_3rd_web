@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
             if(user_type.equals("admin")){
                 resp.sendRedirect("adminPage.html");
             }else{
-                resp.sendRedirect("user.jsp");
+                resp.sendRedirect("test_chart.jsp");
             }
 
         }else{

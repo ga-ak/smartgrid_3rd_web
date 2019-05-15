@@ -44,19 +44,7 @@ public class CalendarDAO {
             psmt.setString(3,end_date);
             rs = psmt.executeQuery();
 
-            if (rs.next()){
-                x_data = rs.getString(1);
-                y_data = rs.getInt(2);
-
-                dates.add(x_data);
-                datas.add(y_data);
-
-            }
-            EnergySeries energys = new EnergySeries("power", datas);
-
-            energy.add(energys);
-
-            calendar_data = new CalendarDTO(dates, energy);
+            getEnergyData(rs);
 
 
         } catch (SQLException e) {
@@ -66,6 +54,22 @@ public class CalendarDAO {
 
         }
         return  calendar_data;
+    }
+
+    private void getEnergyData(ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            x_data = rs.getString(1);
+            y_data = rs.getInt(2);
+
+            dates.add(x_data);
+            datas.add(y_data);
+
+        }
+        EnergySeries energys = new EnergySeries("power", datas);
+
+        energy.add(energys);
+
+        calendar_data = new CalendarDTO(dates, energy);
     }
 
 
@@ -90,19 +94,7 @@ public class CalendarDAO {
 
             rs =psmt.executeQuery();
 
-            while (rs.next()){
-                x_data = rs.getString(1);
-                y_data = rs.getInt(2);
-
-                dates.add(x_data);
-                datas.add(y_data);
-
-            }
-            EnergySeries energys = new EnergySeries("power", datas);
-
-            energy.add(energys);
-
-            calendar_data = new CalendarDTO(dates, energy);
+            getEnergyData(rs);
 
         } catch (SQLException e) {
             e.printStackTrace();
