@@ -18,11 +18,16 @@ import java.util.ArrayList;
 public class StaticsController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //HttpSession session = req.getSession();
+      //  HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+
+        resp.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, content-type, accept");
+
+      //  String user_mail = (String)session.getAttribute("user_mail");
 
         StaticsDAO static_dao = new StaticsDAO();
         StaticsDTO data = static_dao.getStatics("gpalsl");
