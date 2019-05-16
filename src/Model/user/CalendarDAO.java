@@ -1,6 +1,8 @@
 package Model.user;
 
 import Model.DBCP;
+import Model.userGraph.GraphDTO;
+import Model.userGraph.GraphSeries;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,27 +10,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+//GraphDAO, GraphDTO 이용
+//CalendarDAO, CalendarDTO 삭제함
 public class CalendarDAO {
     Connection conn = null;
     PreparedStatement psmt =null;
     ResultSet rs =null;
     String sql ="";
-    CalendarDTO calendar_data =null;
+    GraphDTO graphData = null;
 
-    //x축 : date
-    ArrayList<String> dates = new ArrayList<>();
+    // x 축
+    ArrayList<String> categories = new ArrayList<>();
+    // y 축
+    ArrayList<GraphSeries> series = new ArrayList<>();
+    // y 축의 데이터
+    ArrayList<Integer> seriesData = new ArrayList<>();
 
-    //y축
-    ArrayList<EnergySeries>  energy = new ArrayList<>();
-    //y축 값
-    ArrayList<Integer> datas = new ArrayList<>();
+    int payment=0;
+
 
     String x_data = "";
     int y_data;
 
     //달력에서 구간 선택했을 때
     //일별 전력량 뽑아주기
-    public CalendarDTO elecUsage(String user_email, String start_date, String end_date){
+    public GraphDTO elecUsage(String user_email, String start_date, String end_date){
         conn = DBCP.getConnection();
         sql = "select  date_format(elec.date, '%Y-%m-%d'), sum(elec.electric_energy)\n" +
                 "from elec_power_usage elec, amr amr\n" +
@@ -53,7 +59,7 @@ public class CalendarDAO {
             DBCP.freeConnection(psmt, rs, conn);
 
         }
-        return  calendar_data;
+        return  graphData;
     }
 
     private void getEnergyData(ResultSet rs) throws SQLException {
@@ -61,22 +67,30 @@ public class CalendarDAO {
             x_data = rs.getString(1);
             y_data = rs.getInt(2);
 
-            dates.add(x_data);
-            datas.add(y_data);
+
+            categories.add(x_data);
+            seriesData.add(y_data);
 
         }
-        EnergySeries energys = new EnergySeries("power", datas);
 
-        energy.add(energys);
 
-        calendar_data = new CalendarDTO(dates, energy);
+        for(int i=0;i<seriesData.size();i++){
+            payment+= seriesData.get(i)*10;
+
+        }
+
+        GraphSeries energys = new GraphSeries("power", seriesData);
+
+        series.add(energys);
+
+        graphData = new GraphDTO(categories, series, payment);
     }
 
 
     //달력에서 "오늘"선택했을 때
     //시간별 전력량 뽑아주기
 
-    public CalendarDTO todayUsage(String user_email, String today_date){
+    public GraphDTO todayUsage(String user_email, String today_date){
 
         conn = DBCP.getConnection();
 
@@ -102,7 +116,7 @@ public class CalendarDAO {
             DBCP.freeConnection(psmt, rs, conn);
         }
 
-        return calendar_data;
+        return graphData;
     }
 
 

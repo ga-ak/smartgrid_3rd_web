@@ -2,7 +2,7 @@ package Controller.user;
 
 
 import Model.user.CalendarDAO;
-import Model.user.CalendarDTO;
+import Model.userGraph.GraphDTO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -29,7 +29,7 @@ public class TodayEnergyController extends HttpServlet {
 
 
         CalendarDAO today_dao = new CalendarDAO();
-        CalendarDTO today_data = today_dao.todayUsage(user_email, today_date);
+        GraphDTO today_data = today_dao.todayUsage(user_email, today_date);
 
         Gson energy_data_gson = new Gson();
         String json = energy_data_gson.toJson(today_data);

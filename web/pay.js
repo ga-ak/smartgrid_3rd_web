@@ -1,9 +1,9 @@
 
 
 $(document).ready(function () {
-    let pay = document.getElementById('pay');
+  //  var pay = document.getElementById('pay');
 
-    };
+
 
     function dataSend() {
 
