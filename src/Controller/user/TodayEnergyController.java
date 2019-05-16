@@ -15,21 +15,27 @@ import java.io.IOException;
 
 
 //오늘 사용한 전력량
-@WebServlet("/TodayEnergyCon")
+@WebServlet("/TodayEnergyController")
 public class TodayEnergyController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
+      //  HttpSession session = req.getSession();
 
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+
+        resp.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, content-type, accept");
+
+
        String today_date = req.getParameter("today_date");
-       String user_email = (String)session.getAttribute("user_mail");
+    //   String user_email = (String)session.getAttribute("user_mail");
 
 
         CalendarDAO today_dao = new CalendarDAO();
-        GraphDTO today_data = today_dao.todayUsage(user_email, today_date);
+        GraphDTO today_data = today_dao.todayUsage("gpalsl", today_date);
 
         Gson energy_data_gson = new Gson();
         String json = energy_data_gson.toJson(today_data);

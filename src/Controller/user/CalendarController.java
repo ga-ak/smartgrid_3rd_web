@@ -21,8 +21,9 @@ public class CalendarController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+        resp.addHeader("Access-Control-Allow-Origin", "*");
 
-
+        resp.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, content-type, accept");
         //PrintWriter out = resp.getWriter();
 
         //선택 구간의 전력량
@@ -44,8 +45,8 @@ public class CalendarController extends HttpServlet {
         String json = energy_data_gson.toJson(cal_data);
         System.out.println(json);
 
-        resp.setContentType("application/json; charset=UTF-8");
 
+        resp.setContentType("application/json; charset=UTF-8");
         resp.getWriter().println(json);
 
 

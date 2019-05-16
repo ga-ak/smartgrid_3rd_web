@@ -94,13 +94,9 @@ public class CalendarDAO {
 
         conn = DBCP.getConnection();
 
-        sql = "select  time_format(elec.date, '%H:%m'), sum(elec.electric_energy)\n" +
-                "from elec_power_usage elec, amr amr\n" +
-                "where amr.amr_id=elec.amr_id\n" +
-                "  and amr.user_id = ?\n" +
-                "  and date_format(elec.date, '%Y-%m-%d') =?\n" +
-                "group by time_format(elec.date, '%H:%m')";
-
+        sql = "select  time_format(elec.date, '%H:%m') Times, sum(elec.electric_energy) Energy from elec_power_usage elec, amr amr" +
+                "  where amr.amr_id=elec.amr_id  and amr.user_id =?  and date_format(elec.date, '%Y-%m-%d') =?" +
+                " group by time_format(elec.date, '%H:%m')";
         try {
             psmt = conn.prepareStatement(sql);
             psmt.setString(1, user_email);
@@ -120,5 +116,4 @@ public class CalendarDAO {
     }
 
 
-   //요금 계산
 }
