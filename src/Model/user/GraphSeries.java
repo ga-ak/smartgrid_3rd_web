@@ -1,4 +1,4 @@
-package Model.userGraph;
+package Model.user;
 
 import java.util.ArrayList;
 

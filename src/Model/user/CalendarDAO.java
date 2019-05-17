@@ -1,8 +1,6 @@
 package Model.user;
 
 import Model.DBCP;
-import Model.userGraph.GraphDTO;
-import Model.userGraph.GraphSeries;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,18 +23,19 @@ public class CalendarDAO {
     ArrayList<GraphSeries> series = new ArrayList<>();
     // y 축의 데이터
     ArrayList<Integer> seriesData = new ArrayList<>();
+    ArrayList<Integer> salesData = new ArrayList<>();
 
     int payment=0;
 
 
     String x_data = "";
     int y_data;
-
+    int sales_data;
     //달력에서 구간 선택했을 때
     //일별 전력량 뽑아주기
     public GraphDTO elecUsage(String user_email, String start_date, String end_date){
         conn = DBCP.getConnection();
-        sql = "select  date_format(elec.date, '%Y-%m-%d'), sum(elec.electric_energy)\n" +
+        sql = "select  date_format(elec.date, '%Y-%m-%d'), sum(elec.electric_energy), sum(elec.sales_rate)\n" +
                 "from elec_power_usage elec, amr amr\n" +
                 "where amr.amr_id=elec.amr_id\n" +
                 "and amr.user_id = ?\n" +
@@ -66,22 +65,27 @@ public class CalendarDAO {
         while (rs.next()) {
             x_data = rs.getString(1);
             y_data = rs.getInt(2);
+            sales_data = rs.getInt(3);
+
 
 
             categories.add(x_data);
             seriesData.add(y_data);
+            salesData.add(sales_data);
 
         }
 
 
         for(int i=0;i<seriesData.size();i++){
-            payment+= seriesData.get(i)*10;
+            payment+= (seriesData.get(i)-salesData.get(i))*10;
 
         }
 
-        GraphSeries energys = new GraphSeries("power", seriesData);
+        GraphSeries energys = new GraphSeries("사용량", seriesData);
+        GraphSeries sales = new GraphSeries("판매량", salesData);
 
         series.add(energys);
+        series.add(sales);
 
         graphData = new GraphDTO(categories, series, payment);
     }
@@ -94,7 +98,7 @@ public class CalendarDAO {
 
         conn = DBCP.getConnection();
 
-        sql = "select  time_format(elec.date, '%H:%m') Times, sum(elec.electric_energy) Energy from elec_power_usage elec, amr amr" +
+        sql = "select  time_format(elec.date, '%H:%m') Times, sum(elec.electric_energy) Energy, sum (elec.sales_rate) from elec_power_usage elec, amr amr" +
                 "  where amr.amr_id=elec.amr_id  and amr.user_id =?  and date_format(elec.date, '%Y-%m-%d') =?" +
                 " group by time_format(elec.date, '%H:%m')";
         try {

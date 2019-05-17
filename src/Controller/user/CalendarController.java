@@ -1,7 +1,7 @@
 package Controller.user;
 
 import Model.user.CalendarDAO;
-import Model.userGraph.GraphDTO;
+import Model.user.GraphDTO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;

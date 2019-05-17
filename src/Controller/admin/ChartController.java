@@ -2,7 +2,7 @@ package Controller.admin;
 
 
 import Model.userGraph.GraphDAO;
-import Model.userGraph.GraphDTO;
+import Model.user.GraphDTO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
