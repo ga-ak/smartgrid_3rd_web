@@ -13,19 +13,28 @@ public class StaticsDAO {
 
     String month = "";
     int energy;
-    int month_pay;
+    int sale_rate;
+    int pay;
+
     PreparedStatement psmt = null;
     ResultSet rs = null;
     StaticsDTO static_data = null;
+
+
     ArrayList<String> static_month = new ArrayList<>();
-    ArrayList<Integer> static_pay= new ArrayList<>();
-    ArrayList<Integer> static_energy= new ArrayList<>();
+
+    ArrayList<StaticsSeries> series = new ArrayList<>();
+    ArrayList<Integer> static_energy = new ArrayList<>();
+    ArrayList<Integer> static_sale = new ArrayList<>();
+
+    ArrayList<Integer> static_pay = new ArrayList<>();
+
 
     public StaticsDTO getStatics(String user_mail) {
 
 
         Connection conn = DBCP.getConnection();
-        String sql = "select date_format(elec.date, '%m') Month, sum(elec.electric_energy) Energy, sum(elec.electric_energy)*10 Pay\n" +
+        String sql = "select date_format(elec.date, '%m'), sum(elec.electric_energy), sum(elec.sales_rate)\n" +
                 "from elec_power_usage elec, amr amr\n" +
                 "where amr.amr_id=elec.amr_id\n" +
                 "  and amr.user_id = ?\n" +
@@ -35,18 +44,29 @@ public class StaticsDAO {
             psmt.setString(1, user_mail);
             rs = psmt.executeQuery();
 
+
             while (rs.next()) {
                 month = rs.getString(1);
                 energy = rs.getInt(2);
-                month_pay = rs.getInt(3);
+                sale_rate = rs.getInt(3);
+
+                pay = (energy-sale_rate)*10;
 
                 static_month.add(month);
-                static_pay.add(month_pay);
+                static_sale.add(sale_rate);
                 static_energy.add(energy);
+                static_pay.add(pay);
 
             }
 
-            static_data = new StaticsDTO(static_month, static_energy, static_pay);
+            StaticsSeries energys = new StaticsSeries("사용량", static_energy);
+            StaticsSeries sales = new StaticsSeries("판매량", static_sale);
+
+            series.add(energys);
+            series.add(sales);
+
+            static_data = new StaticsDTO(static_month, series, static_pay);
+
 
 
         } catch (SQLException e) {

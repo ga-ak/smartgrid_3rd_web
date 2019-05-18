@@ -5,24 +5,26 @@ import java.util.ArrayList;
 public class StaticsDTO {
 
     private ArrayList<String> month;
-    private ArrayList<Integer> energy;
-    private ArrayList<Integer> month_pay;
+    //어레이리스트
 
-    public StaticsDTO(ArrayList<String> month, ArrayList<Integer> energy, ArrayList<Integer> month_pay) {
+    private ArrayList<StaticsSeries> series;
+    private ArrayList<Integer> pay;
+
+    public StaticsDTO(ArrayList<String> month, ArrayList<StaticsSeries> series, ArrayList<Integer> pay) {
         this.month = month;
-        this.energy = energy;
-        this.month_pay = month_pay;
+        this.series = series;
+        this.pay = pay;
     }
 
     public ArrayList<String> getMonth() {
         return month;
     }
 
-    public ArrayList<Integer> getEnergy() {
-        return energy;
+    public ArrayList<StaticsSeries> getSeries() {
+        return series;
     }
 
-    public ArrayList<Integer> getMonth_pay() {
-        return month_pay;
+    public ArrayList<Integer> getPay() {
+        return pay;
     }
 }

@@ -37,11 +37,12 @@ public class TodayEnergyController extends HttpServlet {
         GraphDTO today_data = today_dao.todayUsage("gpalsl", today_date);
 
         Gson energy_data_gson = new Gson();
-        String json = energy_data_gson.toJson(today_data);
-        System.out.println(json);
+        String today_json = energy_data_gson.toJson(today_data);
+        System.out.println(today_json);
 
         resp.setContentType("application/json; charset=UTF-8");
-        resp.getWriter().println(json);
+        resp.getWriter().println(today_json);
+
 
 
     }
