@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class StaticsDAO {
 
 
-    String month = "";
+    String categories = "";
     int energy;
     int sale_rate;
     int pay;
@@ -21,7 +21,7 @@ public class StaticsDAO {
     StaticsDTO static_data = null;
 
 
-    ArrayList<String> static_month = new ArrayList<>();
+    ArrayList<String> static_categories = new ArrayList<>();
 
     ArrayList<StaticsSeries> series = new ArrayList<>();
     ArrayList<Integer> static_energy = new ArrayList<>();
@@ -46,13 +46,13 @@ public class StaticsDAO {
 
 
             while (rs.next()) {
-                month = rs.getString(1);
+                categories = rs.getString(1);
                 energy = rs.getInt(2);
                 sale_rate = rs.getInt(3);
 
                 pay = (energy-sale_rate)*10;
 
-                static_month.add(month);
+                static_categories.add(categories);
                 static_sale.add(sale_rate);
                 static_energy.add(energy);
                 static_pay.add(pay);
@@ -65,7 +65,7 @@ public class StaticsDAO {
             series.add(energys);
             series.add(sales);
 
-            static_data = new StaticsDTO(static_month, series, static_pay);
+            static_data = new StaticsDTO(static_categories, series, static_pay);
 
 
 

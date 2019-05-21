@@ -4,20 +4,20 @@ import java.util.ArrayList;
 
 public class StaticsDTO {
 
-    private ArrayList<String> month;
+    private ArrayList<String> categories;
     //어레이리스트
 
     private ArrayList<StaticsSeries> series;
     private ArrayList<Integer> pay;
 
-    public StaticsDTO(ArrayList<String> month, ArrayList<StaticsSeries> series, ArrayList<Integer> pay) {
-        this.month = month;
+    public StaticsDTO(ArrayList<String> categories, ArrayList<StaticsSeries> series, ArrayList<Integer> pay) {
+        this.categories = categories;
         this.series = series;
         this.pay = pay;
     }
 
     public ArrayList<String> getMonth() {
-        return month;
+        return categories;
     }
 
     public ArrayList<StaticsSeries> getSeries() {

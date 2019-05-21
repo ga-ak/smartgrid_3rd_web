@@ -81,8 +81,8 @@ public class CalendarDAO {
 
         }
 
-        GraphSeries energys = new GraphSeries("사용량", seriesData);
-        GraphSeries sales = new GraphSeries("판매량", salesData);
+        GraphSeries energys = new GraphSeries("load", seriesData);
+        GraphSeries sales = new GraphSeries("sale", salesData);
 
         series.add(energys);
         series.add(sales);
